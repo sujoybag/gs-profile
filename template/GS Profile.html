@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Scholar Profile Summarization</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+
+        function check()
+
+        {
+
+            $("#data1").hide()
+            // $("#loading2").hide()
+            $("#loading1").show();
+            // $("#progress_chart1").hide()
+            // $("#progress_chart2").hide()
+            // $("#progress_chart3").hide()
+            // $("#horizontal").hide()
+
+
+        }
+
+
+        function deleteAllCookies() {
+            var cookies = document.cookie.split(";");
+
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = "";
+            }
+        }
+        
+        var tf2 = setFilterGrid("table", table2_Props);
+
+
+        
+
+    </script>
+
+
+
+</head>
+
+<style>
+    table.dataframe, .dataframe th, .dataframe td {
+      border: none;
+      border-bottom: 1px solid #666666;
+      border-collapse: collapse;
+      text-align:left;
+      padding: 10px;
+      margin-bottom: 40px;
+      font-size: 0.9em;
+    }
+
+    th {
+        background-color: #808080;
+        color: #ffffff;
+    }
+
+    tr:nth-child(odd)   { background-color:#eee; }
+    tr:nth-child(even)  { background-color:#fff; }
+
+
+
+
+    .upload-btn-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .btn {
+      border: 2px   #FFA500;
+      color: black;
+      background-color:     #FFA500;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .inputbtn:hover{
+        cursor: pointer;
+    }
+
+    .upload-btn-wrapper input[type=file] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+
+
+    .submit-btn-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .submitbtn {
+      border: 2px #ffffff;
+      color: black;
+      background-color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-btn-wrapper input[type=submit] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+
+
+
+
+
+
+
+
+    
+
+
+    .hero-image {
+        
+        background-image:url(#); 
+        
+        /*https://s14415.pcdn.co/wp-content/uploads/2015/01/sentiment-analysis.jpg*/
+        /*https://i.pinimg.com/originals/58/08/3b/58083bf568e9704202a0266fc7ee60ec.jpg*/
+        
+        background-size: cover; 
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-position: center;
+        position: fixed;
+        overflow-y: auto;
+    }
+
+
+
+
+
+    .flex-wrapper {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-flow: row;
+    }
+
+
+    .single-chart {
+      width: 15%;
+      justify-content: space-around ;
+    }
+
+    .circular-chart {
+      display: block;
+      margin: 10px auto;
+      max-width: 80%;
+      max-height: 250px;
+    }
+
+    .circle-bg {
+      fill: none;
+      stroke: #7F8C8D;
+      stroke-width: 3.5;
+    }
+
+    .circle {
+      fill: none;
+      stroke-width: 2.8;
+      stroke-linecap: round;
+      animation: progress 1s ease-out forwards;
+    }
+
+    @keyframes progress {
+      0% {
+        stroke-dasharray: 0 100;
+      }
+    }
+
+    .circular-chart.orange .circle {
+        stroke: #3c9ee5;
+    }
+
+    .circular-chart.blue .circle {
+      stroke: #ff9f00;
+    }
+
+    .percentage {
+      fill: #ffffff;
+      font-family: times;
+      font-size: 0.3em;
+      text-anchor: middle;
+    }
+
+    input[type="date"]::-webkit-clear-button {
+        display: none;
+    }
+
+    /* Removes the spin button */
+    input[type="date"]::-webkit-inner-spin-button { 
+        display: none;
+    }
+
+    /* Always display the drop down caret */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        color: #2c3e50;
+    }
+
+    /* A few custom styles for date inputs */
+    input[type="date"] {
+        appearance: none;
+        -webkit-appearance: none;
+        color: #95a5a6;
+        font-family: "Helvetica", arial, sans-serif;
+        font-size: 18px;
+        border:1px solid #ecf0f1;
+        background:#ecf0f1;
+        padding:5px;
+        display: inline-block !important;
+        visibility: visible !important;
+    }
+
+    input[type="date"], focus {
+        color: #95a5a6;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+    }
+
+
+
+</style>
+
+<body onload="alertFilename(); deleteAllCookies();">
+
+
+    <div class="hero-image">
+        <div style="width:100%;">
+            <span>
+                <div style="width:80%; float: left;">
+                    <center>
+                      <h2 style="padding-left: 257px; padding-top: 12px;">
+                      <span style="color:#4885ed;">G</span>
+                      <span style="color:#db3236;">o</span>
+                      <span style="color:#f4c20d;">o</span>
+                      <span style="color:#4885ed;">g</span>
+                      <span style="color:#3cba54;">l</span>
+                      <span style="color:#db3236;">e</span>
+                      <span style="color:#808080;">Scholar</span>
+                      <span style="color:#808080;">Profile Analysis</span>
+                    </h2>
+                      <!-- <h2 style="color:Black; ">Google Scholar Profile Summarization</h2> -->
+                    </center>
+                </div>  
+                <div style="width:20%; float: left; padding-top: 10px;">
+                    <center><img src="static/temp/logo.png" alt="Loading" height="60" width="60"></center>
+                    
+                </div> 
+            </span>
+        </div>
+        <br>
+
+        <br>
+        <form action="getfile" method="POST" enctype="multipart/form-data" id="login_form">
+            <span id="horizontal">
+                <center>
+                    <p>A T T R I B U T E</p>
+                </center>
+                    
+            </span>
+            <center>
+
+            <div style="width:100%;">
+                <span>
+                    <hr>
+                </span>
+            </div>
+
+
+            
+            </center>
+
+            <center> 
+            <div class="row"> 
+              <h2 style="color:blue;">
+                <!-- <label>URL OF Google Scholar Profile: <br></label> -->
+                <center>
+                <div style="width: 80%">
+                  <div style="width: 55%; float: left">
+                      <input style="min-height: 28px; min-width: 550px;" id="URL" name="URL" placeholder="Paste URL of Google Scholar Profile" required/>
+                  </div>
+                  <div style="width: 35%; float: left">
+                      <label for="Publication">Publication Type:</label>
+                      <select id="Publication_Type" name="Publication_Type" style="min-height: 30px" required>
+                        <option value="">--SELECT--</option>
+<!--                         <option value="J">Journal</option>
+                        <option value="C">Conference/Procedings</option> -->
+                        <option value="A">All</option>
+                      </select>
+                  </div>
+                  <div class="submit-btn-wrapper" style="width: 10%; float: left">
+                    <button class="submitbtn" id="submitbtn"><img src="https://icons.iconarchive.com/icons/carlosjj/google-jfk/128/search-pointer-icon.png" height="35" width="35"></button>
+                    <input type="submit" name="Submit" onclick="check();">
+                  </div>
+                </div>
+              </center>
+
+                </h2>
+                </div>
+            </center>
+
+            <br>
+
+            
+
+            
+
+            <div style="width:100%;">
+                <span id="data1">
+                    <center>
+                            {%if CNAME%}
+                                <h2><p style="color:black;"></br> Publications Summarization of <i>{{CNAME}}</i> (# of Articles: {{TPUB}}, Avg Citations: {{AVGCITE}})</p></h2>
+                            {% endif %}
+                    </center>
+                </span>
+            </div>
+            <span id="loading1" style="display: none">
+                <center><img src="https://cdn2.scratch.mit.edu/get_image/gallery/2982031_200x130.png" alt="Loading" height="100" width="100"></center>
+                <center><p style="color:black;"> Processing <br> Please Wait! </p></center>
+            </span>
+            <center>
+            <div  style="width:80%;">
+                
+                <span id="data1">
+                    <center>
+            <div  style="width:100%;">
+                
+                <span id="data1">
+                    <center>
+                        {% for table in tables %}
+                            {{ table|safe }}
+                        {% endfor %}
+                    </center>
+                </span>
+            </div>
+            </center>
+                </span>
+            </div>
+            </center>
+            <br>
+
+        </form>
+    </div>
+
+
+</body>
+</html>
