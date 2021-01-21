@@ -25,10 +25,10 @@ options.add_argument("--incognito")
 options.add_argument("headless") # Runs Chrome in headless mode.
 # options.add_argument('--no-sandbox') # Bypass OS security model
 options.add_argument('--disable-gpu')  # applicable to windows os only
-
-ABDCpath="template/File/ABDC_2019.xlsx"
-SCOPUSpath="template/File/SCOPUS_2018.xlsx"
-chromepath="template/File/chromedriver.exe"
+basepath=os.getcwd()
+ABDCpath=basepath+"template/File/ABDC_2019.xlsx"
+SCOPUSpath=basepath+"template/File/SCOPUS_2018.xlsx"
+chromepath=basepath+"template/File/chromedriver.exe"
 
 app = Flask(__name__, template_folder='template')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
