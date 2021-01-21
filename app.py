@@ -26,7 +26,7 @@ options.add_argument("headless") # Runs Chrome in headless mode.
 # options.add_argument('--no-sandbox') # Bypass OS security model
 options.add_argument('--disable-gpu')  # applicable to windows os only
 
-basepath="/template/File/"
+basepath="template/File/"
 ABDCpath=basepath+"ABDC_2019.xlsx"
 SCOPUSpath=basepath+"SCOPUS_2018.xlsx"
 chromepath=basepath+"chromedriver.exe"
