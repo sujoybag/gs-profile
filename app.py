@@ -47,7 +47,7 @@ def getfile():
             url = request.form['URL']
             ptype = request.form['Publication_Type']
             SCOPUS=pd.read_excel(r""+SCOPUSpath)
-            return render_template('GS Profile.html', tables=[SCOPUS.to_html(classes='data', header="true", index=False)], CNAME="Sujoy", TPUB="22", AVGCITE="21")
+            print(SCOPUS)
 #             driver = webdriver.Chrome(chromepath, options=options)
 #             driver.delete_all_cookies()
 #             # clear_cache(driver)
