@@ -28,9 +28,9 @@ options.add_argument('--disable-gpu')  # applicable to windows os only
 
 APP_ROOT = os.getcwd()
 print(APP_ROOT)
-ABDCpath = os.path.join(APP_ROOT, 'template\File\ABDC_2019.xlsx')
-SCOPUSpath = os.path.join(APP_ROOT, 'template\File\SCOPUS_2018.xlsx')
-chromepath = os.path.join(APP_ROOT, 'template\File\chromedriver.exe')
+ABDCpath = os.path.join(APP_ROOT, 'template\\File\\ABDC_2019.xlsx')
+SCOPUSpath = os.path.join(APP_ROOT, 'template\\File\\SCOPUS_2018.xlsx')
+chromepath = os.path.join(APP_ROOT, 'template\\File\\chromedriver.exe')
 print(ABDCpath)
 app = Flask(__name__, template_folder='template')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
