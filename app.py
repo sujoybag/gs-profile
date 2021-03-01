@@ -26,12 +26,11 @@ options.add_argument("headless") # Runs Chrome in headless mode.
 # options.add_argument('--no-sandbox') # Bypass OS security model
 options.add_argument('--disable-gpu')  # applicable to windows os only
 
-APP_ROOT = os.getcwd()
-print(APP_ROOT)
+# basepath="C:\\New Volume (D)\\Google Scholar Profile\\GUI\\template\\File\\"
 ABDCpath="ABDC_2019.xlsx"
 SCOPUSpath="SCOPUS_2018.xlsx"
 chromepath="chromedriver.exe"
-print(ABDCpath)
+
 app = Flask(__name__, template_folder='template')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
