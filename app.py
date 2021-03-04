@@ -45,7 +45,6 @@ def getfile():
         try:
             url = request.form['URL']
             ptype = request.form['Publication_Type']
-            return render_template('Issue1.html')
             driver = webdriver.Chrome(chromepath, options=options)
             return render_template('Issue2.html')
             driver.delete_all_cookies()
