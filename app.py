@@ -45,8 +45,11 @@ def getfile():
         try:
             url = request.form['URL']
             ptype = request.form['Publication_Type']
+            return render_template('Issue1.html')
             driver = webdriver.Chrome(chromepath, options=options)
+            return render_template('Issue2.html')
             driver.delete_all_cookies()
+            return render_template('Issue3.html')
             # clear_cache(driver)
             driver.get (url)
             # # driver.minimize_window()
@@ -84,7 +87,6 @@ def getfile():
                 Publication_Name_words=Publication_Name.split(" ")
                 conf_check = 0
                 conf_word_list = ['conference', 'annual', 'meet', 'procedings', 'conf', 'conf.', 'proc.', 'proc']
-                return render_template('Issue1.html')
                 for word in Publication_Name_words:
                     if word.lower() in conf_word_list:
                         conf_check = 1     
@@ -117,7 +119,6 @@ def getfile():
                     p_year=""
                 temp=pd.DataFrame({'Authors': [authors], 'Title': [title_elem.text], 'Publication_Name' : [jname], 'Citations' : [cite], 'Year':[p_year]})
                 scholar_details=scholar_details.append(temp)
-            return render_template('Issue1.html')
             scholar_details['Publication_Name']=scholar_details['Publication_Name'].str.replace("&", "and")
             scholar_details['Publication_Name']=scholar_details['Publication_Name'].str.replace(",","")
             scholar_details=scholar_details.where(scholar_details['Publication_Name']!="")
@@ -126,7 +127,6 @@ def getfile():
             df_Publication_Name=pd.DataFrame()
             df_citations=pd.DataFrame()
             dfd=pd.DataFrame()
-            return render_template('Issue2.html')
             scholar_details['Citations']=scholar_details['Citations'].astype('int')
             df_Publication_Name=scholar_details.groupby(['Publication_Name'])['Citations'].count().reset_index(name='# of Articles')
             df_citations=scholar_details.groupby(['Publication_Name'])['Citations'].mean().reset_index(name='Avg Citations')
@@ -134,20 +134,17 @@ def getfile():
             dfd['# of Articles']=df_Publication_Name['# of Articles']
             dfd['Avg Citations']=df_citations['Avg Citations']
             ABDC=pd.read_excel(r""+ABDCpath)
-            return render_template('Issue3.html')
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace("&", "And")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace(",","")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.title()
             ABDC=ABDC[['Publication_Name','Year of Inception','Publication Rank (ABDC)']]
             final_df=pd.DataFrame()
-            return render_template('Issue4.html')
             temp_df=pd.merge(dfd,ABDC,on='Publication_Name',how='left')
             SCOPUS=pd.read_excel(r""+SCOPUSpath)
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.replace("&", "And")
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.replace(",","")
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.title()
             final_df=pd.merge(temp_df,SCOPUS,on='Publication_Name',how='left')
-            return render_template('Issue5.html')
             final_df=final_df[['Publication_Name','Publisher','Year of Inception','Publication Rank (ABDC)','# of Articles','Avg Citations']]
             final_df.fillna('', inplace=True)
             final_df=final_df.sort_values(by = ['# of Articles','Avg Citations'], ascending=[False, False])
@@ -157,7 +154,6 @@ def getfile():
             totalPublication=final_df['# of Articles'].sum()
             avgCitations=final_df['Avg Citations'].mean()
             avgCitations=int(avgCitations)
-            return render_template('Issue6.html')
             return render_template('GS Profile.html', tables=[final_df.to_html(classes='data', header="true", index=False)], CNAME=Scholar_Name, TPUB=totalPublication, AVGCITE=avgCitations)
         except:
             return render_template('Issue.html')
