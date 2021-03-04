@@ -68,6 +68,7 @@ def getfile():
             soup = BeautifulSoup(src, 'html.parser')
             job_elems = soup.find_all('tr', class_='gsc_a_tr')
             Scholar_Name = soup.find('title').text.split(' - ')[0]
+            print(Scholar_Name)
             scholar_details=pd.DataFrame()
             for job_elem in job_elems:
                 title_elem = job_elem.find('a', class_='gsc_a_at')
