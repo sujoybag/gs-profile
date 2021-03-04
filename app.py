@@ -68,7 +68,6 @@ def getfile():
             soup = BeautifulSoup(src, 'html.parser')
             job_elems = soup.find_all('tr', class_='gsc_a_tr')
             Scholar_Name = soup.find('title').text.split(' - ')[0]
-            print(Scholar_Name)
             scholar_details=pd.DataFrame()
             for job_elem in job_elems:
                 title_elem = job_elem.find('a', class_='gsc_a_at')
@@ -153,7 +152,6 @@ def getfile():
             totalPublication=final_df['# of Articles'].sum()
             avgCitations=final_df['Avg Citations'].mean()
             avgCitations=int(avgCitations)
-            print(final_df)
             return render_template('GS Profile.html', tables=[final_df.to_html(classes='data', header="true", index=False)], CNAME=Scholar_Name, TPUB=totalPublication, AVGCITE=avgCitations)
         except:
             return render_template('Issue.html')
