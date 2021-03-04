@@ -84,6 +84,7 @@ def getfile():
                 Publication_Name_words=Publication_Name.split(" ")
                 conf_check = 0
                 conf_word_list = ['conference', 'annual', 'meet', 'procedings', 'conf', 'conf.', 'proc.', 'proc']
+                return render_template('Issue1.html')
                 for word in Publication_Name_words:
                     if word.lower() in conf_word_list:
                         conf_check = 1     
