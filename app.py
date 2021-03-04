@@ -25,11 +25,8 @@ options.add_argument("--incognito")
 options.add_argument("headless") # Runs Chrome in headless mode.
 # options.add_argument('--no-sandbox') # Bypass OS security model
 options.add_argument('--disable-gpu')  # applicable to windows os only
-
-# basepath="C:\\New Volume (D)\\Google Scholar Profile\\GUI\\template\\File\\"
 ABDCpath="ABDC_2019.xlsx"
 SCOPUSpath="SCOPUS_2018.xlsx"
-chromepath="chromedriver.exe"
 
 app = Flask(__name__, template_folder='template')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -45,10 +42,9 @@ def getfile():
         try:
             url = request.form['URL']
             ptype = request.form['Publication_Type']
-            driver = webdriver.Chrome(chromepath, options=options)
+            driver = webdriver.Chrome("chromedriver.exe", options=options)
             return render_template('Issue2.html')
             driver.delete_all_cookies()
-            return render_template('Issue3.html')
             # clear_cache(driver)
             driver.get (url)
             # # driver.minimize_window()
