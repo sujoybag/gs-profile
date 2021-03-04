@@ -157,6 +157,7 @@ def getfile():
             return render_template('GS Profile.html', tables=[final_df.to_html(classes='data', header="true", index=False)], CNAME=Scholar_Name, TPUB=totalPublication, AVGCITE=avgCitations)
         except:
             print("Please ask tools developer to resolve the problem!")
-
+    else:
+    	return render_template('GS Profile.html')
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host = '0.0.0.0')
