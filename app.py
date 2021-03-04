@@ -43,6 +43,7 @@ def GSProfile():
 def getfile():
     if request.method == 'POST':
         try:
+            return render_template('Issue1.html')
             url = request.form['URL']
             ptype = request.form['Publication_Type']
             driver = webdriver.Chrome(chromepath, options=options)
