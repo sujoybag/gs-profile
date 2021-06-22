@@ -128,14 +128,14 @@ def getfile():
             dfd['Publication_Name']=df_Publication_Name['Publication_Name']
             dfd['# of Articles']=df_Publication_Name['# of Articles']
             dfd['Avg Citations']=df_citations['Avg Citations']
-            ABDC=pd.read_excel(r""+ABDCpath)
+            ABDC=pd.read_excel(ABDCpath, engine='python')
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace("&", "And")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace(",","")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.title()
             ABDC=ABDC[['Publication_Name','Year of Inception','Publication Rank (ABDC)']]
             final_df=pd.DataFrame()
             temp_df=pd.merge(dfd,ABDC,on='Publication_Name',how='left')
-            SCOPUS=pd.read_excel(r""+SCOPUSpath)
+            SCOPUS=pd.read_excel(SCOPUSpath, engine='python')
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.replace("&", "And")
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.replace(",","")
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.title()
