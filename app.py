@@ -127,16 +127,14 @@ def getfile():
             dfd['Publication_Name']=df_Publication_Name['Publication_Name']
             dfd['# of Articles']=df_Publication_Name['# of Articles']
             dfd['Avg Citations']=df_citations['Avg Citations']
-            ABDCpath=pathlib.Path(__file__).parent.absolute()+"/ABDC_2019.xlsx"
-            SCOPUSpath=pathlib.Path(__file__).parent.absolute()+"/SCOPUS_2018.xlsx"
-            ABDC=pd.read_excel(ABDCpath, engine='python')
+            ABDC=pd.read_excel(r"https://raw.githubusercontent.com/sujoybag/gs-profile/ABDC_2019.xlsx",sep=",")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace("&", "And")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace(",","")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.title()
             ABDC=ABDC[['Publication_Name','Year of Inception','Publication Rank (ABDC)']]
             final_df=pd.DataFrame()
             temp_df=pd.merge(dfd,ABDC,on='Publication_Name',how='left')
-            SCOPUS=pd.read_excel(SCOPUSpath, engine='python')
+            SCOPUS=pd.read_excel(r"https://raw.githubusercontent.com/sujoybag/gs-profile/SCOPUS_2018.xlsx",sep=",")
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.replace("&", "And")
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.replace(",","")
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.title()
