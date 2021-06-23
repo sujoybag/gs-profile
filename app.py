@@ -15,6 +15,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver import DesiredCapabilities
 import re
 import time
+import pathlib
 from bs4 import BeautifulSoup
 
 options = Options()
@@ -25,8 +26,6 @@ options.add_argument("--incognito")
 options.add_argument("headless") # Runs Chrome in headless mode.
 # options.add_argument('--no-sandbox') # Bypass OS security model
 options.add_argument('--disable-gpu')  # applicable to windows os only
-ABDCpath="r/ABDC_2019.xlsx"
-SCOPUSpath="r/SCOPUS_2018.xlsx"
 
 app = Flask(__name__, template_folder='template')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -128,6 +127,8 @@ def getfile():
             dfd['Publication_Name']=df_Publication_Name['Publication_Name']
             dfd['# of Articles']=df_Publication_Name['# of Articles']
             dfd['Avg Citations']=df_citations['Avg Citations']
+            ABDCpath=pathlib.Path(__file__).parent.absolute()+"/ABDC_2019.xlsx"
+            SCOPUSpath=pathlib.Path(__file__).parent.absolute()+"/SCOPUS_2018.xlsx"
             ABDC=pd.read_excel(ABDCpath, engine='python')
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace("&", "And")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace(",","")
