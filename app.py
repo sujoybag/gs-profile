@@ -37,7 +37,7 @@ def GSProfile():
 @app.route('/getfile', methods=['GET','POST'])
 def getfile():
     if request.method == 'POST':
-        try:
+#         try:
             url = request.form['URL']
             ptype = request.form['Publication_Type']
             driver = webdriver.Chrome("chromedriver.exe", options=options)
@@ -149,8 +149,8 @@ def getfile():
             avgCitations=final_df['Avg Citations'].mean()
             avgCitations=int(avgCitations)
             return render_template('GS Profile.html', tables=[final_df.to_html(classes='data', header="true", index=False)], CNAME=Scholar_Name, TPUB=totalPublication, AVGCITE=avgCitations)
-        except:
-            return render_template('Issue.html')
+#         except:
+#             return render_template('Issue.html')
     else:
         return render_template('GS Profile.html')
 if __name__ == "__main__":
