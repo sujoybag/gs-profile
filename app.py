@@ -126,8 +126,8 @@ def getfile():
             dfd['Publication_Name']=df_Publication_Name['Publication_Name']
             dfd['# of Articles']=df_Publication_Name['# of Articles']
             dfd['Avg Citations']=df_citations['Avg Citations']
-            ABDC=pd.read_excel(r""+os.getcwd()+"\\ABDC_2019.xlsx", index=False)
             return render_template('Issue2.html')
+            ABDC=pd.read_excel(r""+os.getcwd()+"\\ABDC_2019.xlsx", index=False)
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace("&", "And")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace(",","")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.title()
