@@ -40,7 +40,7 @@ def getfile():
 #         try:
             url = request.form['URL']
             ptype = request.form['Publication_Type']
-            driver = webdriver.Chrome("chromedriver.exe", options=options)
+            driver = webdriver.Chrome("https://github.com/sujoybag/gs-profile/blob/main/chromedriver.exe?raw=true", options=options)
             driver.delete_all_cookies()
             # clear_cache(driver)
             driver.get (url)
