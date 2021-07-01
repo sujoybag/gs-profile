@@ -6,5 +6,4 @@ beautifulsoup4==4.9.3
 gunicorn
 chromedriver-py==91.0.4472.19
 datetime
-re
 time
