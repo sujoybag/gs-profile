@@ -48,7 +48,7 @@ def getfile():
     if request.method == 'POST':
         url = request.form['URL']
         ptype = request.form['Publication_Type']
-        webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+        driver=webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
         driver.delete_all_cookies()
         # clear_cache(driver)
         driver.get (url)
