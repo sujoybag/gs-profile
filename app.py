@@ -17,7 +17,7 @@ import re
 import time
 from bs4 import BeautifulSoup
 import chromedriver_py
-from chromedriver_py import binary_path # this will get you the path variable
+from webdriver_manager.chrome import ChromeDriverManager
 
 options = Options()
 # options = webdriver.ChromeOptions()
@@ -41,7 +41,7 @@ def getfile():
     if request.method == 'POST':
         url = request.form['URL']
         ptype = request.form['Publication_Type']
-        driver = webdriver.Chrome(executable_path = binary_path)
+        driver = webdriver.Chrome(ChromeDriverManager().install())
         driver.delete_all_cookies()
         # clear_cache(driver)
         driver.get (url)
