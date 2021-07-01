@@ -19,6 +19,13 @@ from bs4 import BeautifulSoup
 import chromedriver_py
 from webdriver_manager.chrome import ChromeDriverManager
 
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.binary_location = GOOGLE_CHROME_PATH
+
 options = Options()
 # options = webdriver.ChromeOptions()
 options.add_argument("--disable-infobars")  
@@ -41,7 +48,7 @@ def getfile():
     if request.method == 'POST':
         url = request.form['URL']
         ptype = request.form['Publication_Type']
-        driver = webdriver.Chrome(ChromeDriverManager().install())
+        webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
         driver.delete_all_cookies()
         # clear_cache(driver)
         driver.get (url)
