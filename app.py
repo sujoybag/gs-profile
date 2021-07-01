@@ -41,7 +41,6 @@ def getfile():
             url = request.form['URL']
             ptype = request.form['Publication_Type']
             driver = webdriver.Chrome("chromedriver.exe", options=options)
-            return render_template('Issue2.html')
             driver.delete_all_cookies()
             # clear_cache(driver)
             driver.get (url)
@@ -126,14 +125,14 @@ def getfile():
             dfd['Publication_Name']=df_Publication_Name['Publication_Name']
             dfd['# of Articles']=df_Publication_Name['# of Articles']
             dfd['Avg Citations']=df_citations['Avg Citations']
-            ABDC=pd.read_excel(r""+os.getcwd()+"\\ABDC_2019.xlsx", index=False)
+            ABDC=pd.read_excel(r"https://github.com/sujoybag/gs-profile/blob/main/ABDC_2019.xlsx", index=False)
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace("&", "And")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.replace(",","")
             ABDC['Publication_Name']=ABDC['Publication_Name'].str.title()
             ABDC=ABDC[['Publication_Name','Year of Inception','Publication Rank (ABDC)']]
             final_df=pd.DataFrame()
             temp_df=pd.merge(dfd,ABDC,on='Publication_Name',how='left')
-            SCOPUS=pd.read_excel(r""+os.getcwd()+"\\SCOPUS_2018.xlsx", index=False)
+            SCOPUS=pd.read_excel(r"https://github.com/sujoybag/gs-profile/blob/main/SCOPUS_2018.xlsx", index=False)
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.replace("&", "And")
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.replace(",","")
             SCOPUS['Publication_Name']=SCOPUS['Publication_Name'].str.title()
