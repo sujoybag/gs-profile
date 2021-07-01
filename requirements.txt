@@ -4,3 +4,4 @@ Flask==1.1.1
 numpy==1.16.5
 beautifulsoup4==4.9.3
 gunicorn
+chromedriver-py==91.0.4472.19
