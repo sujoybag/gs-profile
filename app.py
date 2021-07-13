@@ -16,17 +16,24 @@ from selenium.webdriver import DesiredCapabilities
 import re
 import time
 from bs4 import BeautifulSoup
-import webdriver_manager
-from webdriver_manager.chrome import ChromeDriverManager
+# import webdriver_manager
+# from webdriver_manager.chrome import ChromeDriverManager
 
-options = Options()
-# options = webdriver.ChromeOptions()
-options.add_argument("--disable-infobars")  
-options.add_argument("--incognito")
-# options.headless = True      
-options.add_argument("headless") # Runs Chrome in headless mode.
-# options.add_argument('--no-sandbox') # Bypass OS security model
-options.add_argument('--disable-gpu')  # applicable to windows os only
+# options = Options()
+# # options = webdriver.ChromeOptions()
+# options.add_argument("--disable-infobars")  
+# options.add_argument("--incognito")
+# # options.headless = True      
+# options.add_argument("headless") # Runs Chrome in headless mode.
+# # options.add_argument('--no-sandbox') # Bypass OS security model
+# options.add_argument('--disable-gpu')  # applicable to windows os only
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+
 
 app = Flask(__name__, template_folder='template')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -41,7 +48,7 @@ def getfile():
     if request.method == 'POST':
         url = request.form['URL']
         ptype = request.form['Publication_Type']
-        driver = webdriver.Chrome(ChromeDriverManager().install())
+        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
         driver.delete_all_cookies()
         # clear_cache(driver)
         driver.get (url)
