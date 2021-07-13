@@ -24,7 +24,7 @@ chrome_options = Options()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 # chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
+# chrome_options.add_argument("--no-sandbox")
 
 chrome_options.add_argument("--disable-infobars")  
 chrome_options.add_argument("--incognito")    
@@ -50,11 +50,11 @@ def getfile():
         # clear_cache(driver)
         driver.get (url)
         # # driver.minimize_window()
-        time.sleep(7)
+        time.sleep(8)
         prev_paper_num_final = 0
         while (driver.find_element_by_xpath('//*[@id="gsc_bpf_more"]/span/span[2]')):
             driver.find_element_by_xpath('//*[@id="gsc_bpf_more"]/span/span[2]').click()
-            time.sleep(5)
+            time.sleep(6)
             src = driver.page_source
             soup = BeautifulSoup(src, 'html.parser')
             paper_num = soup.find("span", {"id":"gsc_a_nn"})
