@@ -46,6 +46,7 @@ def getfile():
         url = request.form['URL']
         ptype = request.form['Publication_Type']
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
+        driver.implicitly_wait(10)
         driver.delete_all_cookies()
         # clear_cache(driver)
         driver.get (url)
