@@ -48,7 +48,8 @@ def getfile():
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
         driver.delete_all_cookies()
         # clear_cache(driver)
-        driver.get (url, timeout=300)
+        driver.implicitly_wait(300)
+        driver.get (url)
         # # driver.minimize_window()
         time.sleep(10)
         prev_paper_num_final = 0
