@@ -1,1 +1,1 @@
-gunicorn hello:app --timeout 6000
+web: python main.py
