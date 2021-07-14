@@ -46,16 +46,16 @@ def getfile():
         url = request.form['URL']
         ptype = request.form['Publication_Type']
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
-        driver.implicitly_wait(10)
         driver.delete_all_cookies()
         # clear_cache(driver)
+        driver.implicitly_wait(10)
         driver.get (url)
         # # driver.minimize_window()
-        time.sleep(8)
+        time.sleep(10)
         prev_paper_num_final = 0
         while (driver.find_element_by_xpath('//*[@id="gsc_bpf_more"]/span/span[2]')):
             driver.find_element_by_xpath('//*[@id="gsc_bpf_more"]/span/span[2]').click()
-            time.sleep(6)
+            time.sleep(10)
             src = driver.page_source
             soup = BeautifulSoup(src, 'html.parser')
             paper_num = soup.find("span", {"id":"gsc_a_nn"})
