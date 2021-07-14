@@ -51,11 +51,11 @@ def getfile():
         driver.implicitly_wait(10)
         driver.get (url)
         # # driver.minimize_window()
-        time.sleep(10)
+        time.sleep(30)
         prev_paper_num_final = 0
         while (driver.find_element_by_xpath('//*[@id="gsc_bpf_more"]/span/span[2]')):
             driver.find_element_by_xpath('//*[@id="gsc_bpf_more"]/span/span[2]').click()
-            time.sleep(10)
+            time.sleep(20)
             src = driver.page_source
             soup = BeautifulSoup(src, 'html.parser')
             paper_num = soup.find("span", {"id":"gsc_a_nn"})
